@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './components/Navbar';
+import ProfileCard from './components/ProfileCard';
+import BackgroundAnimation from './components/BackgroundAnimation';
+import { personalData } from './data/personalData';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-base-100 min-h-screen relative"> {/* Thêm lại relative ở đây */}
+      <BackgroundAnimation />
+      <div className="flex items-center justify-center h-screen absolute top-0 left-0 w-full"> {/* Giữ nguyên phần này */}
+        <ProfileCard data={personalData} />
+      </div>
     </div>
   );
 }
