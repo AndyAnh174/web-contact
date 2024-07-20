@@ -6,7 +6,7 @@ const SocialLink = ({ url, icon }) => { // Loại bỏ platform
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="btn btn-circle btn-outline text-2xl" // Sử dụng btn-circle
+      className="btn btn-circle btn-outline text-4xl" // Sử dụng btn-circle
     >
       {icon}
     </a>
