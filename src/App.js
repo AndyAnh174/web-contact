@@ -1,18 +1,43 @@
-import React from 'react';
-import Navbar from './components/Navbar';
+import React, { useEffect, useRef, useState } from 'react';
 import ProfileCard from './components/ProfileCard';
+import SocialIcons from './components/SocialIcons';
 import BackgroundAnimation from './components/BackgroundAnimation';
 import { personalData } from './data/personalData';
-import SocialIcons from './components/SocialIcons';
 
 function App() {
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  }, []);
+
+  const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
-    
-    <div className="bg-base-100 min-h-screen relative"> {/* Thêm lại relative ở đây */}
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gray-900">
       <BackgroundAnimation />
-      <div className="flex items-center justify-center h-screen absolute top-0 left-0 w-full"> {/* Giữ nguyên phần này */}
+      <audio ref={audioRef} src="/background-music.mp3" loop />
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
         <ProfileCard data={personalData} />
-        <SocialIcons links={personalData.links} /> {/* Đặt SocialIcons bên ngoài ProfileCard */}
+        <SocialIcons links={personalData.links} />
+        <button
+          onClick={togglePlay}
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+        >
+          {isPlaying ? 'Pause Music' : 'Play Music'}
+        </button>
       </div>
     </div>
   );

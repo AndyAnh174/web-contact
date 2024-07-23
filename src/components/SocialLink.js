@@ -1,12 +1,12 @@
 import React from 'react';
 
-const SocialLink = ({ url, icon }) => { // Loại bỏ platform
+const SocialLink = ({ url, icon }) => {
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="btn btn-circle btn-outline text-4xl" // Sử dụng btn-circle
+      className="text-white text-5xl m-2 hover:text-gray-400"
     >
       {icon}
     </a>
